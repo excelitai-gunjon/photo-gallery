@@ -11,7 +11,7 @@ class PhotoApiRequest{
       headers:
       {
         "page":"1",
-        "limit":"200",
+        "limit":"20",
       },
     );
     //return await rootBundle.loadString('assets/photo.json');
@@ -29,6 +29,11 @@ class PhotoApiRequest{
     PhotosList photosList = PhotosList.fromJson(jsonResponse);
     print("photos " + photosList.photos![0].downloadUrl!.toString());
     return photosList.photos;
+  }
+
+  List<PhotoDataModel> photos=[];
+  loadTwentyPhotos(){
+     photos=List.from(photos)..addAll(loadPhotosList() as List<PhotoDataModel>);
   }
 }
 

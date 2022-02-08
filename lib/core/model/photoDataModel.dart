@@ -1,5 +1,17 @@
 
-class PhotosList {
+import 'package:flutter/cupertino.dart';
+import 'package:photo_gallery/core/service/photoApiService.dart';
+
+class PhotosList with ChangeNotifier{
+  PhotoApiRequest loadPhotosFromApi=PhotoApiRequest();
+
+  List<PhotoDataModel> loadedPhotos=[];
+
+  loadTwentyPhotos(){
+    loadedPhotos=List.from(loadedPhotos)..addAll(loadPhotosFromApi.loadPhotosList() as List<PhotoDataModel>);
+    notifyListeners();
+  }
+
   final List<PhotoDataModel>? photos;
 
   PhotosList({
