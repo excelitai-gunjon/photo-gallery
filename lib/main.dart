@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/core/controller/full_screen_data.dart';
-import 'package:photo_gallery/ui/photo_gallery_page.dart';
+import 'package:photo_gallery/model/service/photoApiService.dart';
+import 'package:photo_gallery/provider/photo_view_data_provider.dart';
+import 'package:photo_gallery/view/photo_gallery_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -13,9 +14,12 @@ class MyApp extends StatelessWidget{
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: FullScreenData()),
+        ChangeNotifierProvider.value(value: PhotoViewDataProvider()),//PhotoViewDataProvider
+        ChangeNotifierProvider.value(value: PhotoApiService()),//TenImageProvider
+        //ChangeNotifierProvider.value(value: TenImageProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget{
           // is not restarted.
           //primarySwatch: Colors.blue,
         ),
-        home: const PhotoGallery(),
+        home: PhotoGallery(),
       ),
     );
   }

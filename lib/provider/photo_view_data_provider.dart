@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class FullScreenData with ChangeNotifier{
+class PhotoViewDataProvider with ChangeNotifier{
 
   String imageUrl="";
 

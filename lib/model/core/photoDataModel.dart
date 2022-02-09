@@ -1,17 +1,9 @@
 
-import 'package:flutter/cupertino.dart';
-import 'package:photo_gallery/core/service/photoApiService.dart';
 
-class PhotosList with ChangeNotifier{
-  PhotoApiRequest loadPhotosFromApi=PhotoApiRequest();
 
-  List<PhotoDataModel> loadedPhotos=[];
+class PhotosList{
 
-  loadTwentyPhotos(){
-    loadedPhotos=List.from(loadedPhotos)..addAll(loadPhotosFromApi.loadPhotosList() as List<PhotoDataModel>);
-    notifyListeners();
-  }
-
+  List<String> loadedPhotos=[];
   final List<PhotoDataModel>? photos;
 
   PhotosList({
@@ -20,7 +12,9 @@ class PhotosList with ChangeNotifier{
 
   factory PhotosList.fromJson(List<dynamic> parsedJson) {
 
-    List<PhotoDataModel> productList = parsedJson.map((i) => PhotoDataModel.fromJson(i)).toList();
+    List<PhotoDataModel> productList = parsedJson.map((i) {
+      return PhotoDataModel.fromJson(i);
+    }).toList();
     return PhotosList(
       photos: productList,
     );

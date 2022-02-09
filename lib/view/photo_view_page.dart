@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/core/controller/ImageTransformationController.dart';
-import 'package:photo_gallery/core/controller/full_screen_data.dart';
-import 'package:photo_gallery/core/controller/image_tap_down_details.dart';
+import 'package:photo_gallery/model/core/ImageTransformationController.dart';
+import 'package:photo_gallery/provider/photo_view_data_provider.dart';
+import 'package:photo_gallery/model/core/ImageTapDownDetails.dart';
 import 'package:provider/provider.dart';
 
 class FullScreenView extends StatelessWidget {
@@ -26,7 +26,7 @@ class FullScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final fullScreenProvider = Provider.of<FullScreenData>(context);
+    final fullScreenProvider = Provider.of<PhotoViewDataProvider>(context);
     final transformationController = ImageTransformationController();
     final tapDownDetails=ImageTapDownDetails();
 
